@@ -1,10 +1,10 @@
-import { SafeAreaView, Text } from "react-native";
+import { SafeAreaView } from "react-native";
 import React, { useState, useEffect } from "react";
 import { getPokemonsApi, getPokemonDetailsByUrlApi } from "../api/pokemon";
+import PokemonList from "../components/PokemonList";
 
 export default function PokedexScreen() {
   const [pokemons, setPokemons] = useState([]);
-  console.log("pokemon--->", pokemons);
 
   useEffect(() => {
     (async () => {
@@ -28,7 +28,8 @@ export default function PokedexScreen() {
           imagen: pokemonDetails.sprites.other["official-artwork"].front_default
         });
       }
-      setPokemons(...pokemons, ...pokemonsArray);
+      //setPokemons(...pokemons, ...pokemonsArray);
+      setPokemons((prevPokemons) => [...prevPokemons, ...pokemonsArray]);
     } catch (error) {
       error.error(error);
     }
@@ -36,7 +37,7 @@ export default function PokedexScreen() {
 
   return (
     <SafeAreaView>
-      <Text>Pokedex</Text>
+      <PokemonList pokemons={pokemons} />
     </SafeAreaView>
   );
 }
