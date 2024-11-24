@@ -12,3 +12,7 @@ npm install @react-navigation/native-stack
 npm install @react-navigation/bottom-tabs
 npm i react-native-vector-icons@10.0.3
 npm i react-native-gesture-handler --> este no es necesario por las versiones actuales que se usan
+
+3.- Intalar las dependencias para formar correctamente el menu
+npm install @react-navigation/stack
+
